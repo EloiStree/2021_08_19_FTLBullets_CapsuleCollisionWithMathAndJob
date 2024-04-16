@@ -1,0 +1,23 @@
+
+{                                                                                
+  "name": "be.eloistree.capsulecollisionutility",                              
+  "displayName": "Capsule Collision Utility",                        
+  "version": "0.0.1",                         
+  "unity": "2018.1",                             
+  "unityRelease": "",                             
+  "description": "Tool that allows to use math and job system to compute the collision between capsule in Job System.",                         
+  "keywords": ["Script","Tool"],                       
+  "dependencies":{},     
+  "relatedPackages":{},     
+  "samples" : [],     
+  "author" : {
+"name":"",
+"mail":"",
+"url":""},     
+  "repository":{
+"type":"Git",
+"url":"https://github.com/EloiStree/2021_08_19_FTLBullets_CapsuleCollisionWithMathAndJob.git",
+"footprint":"",
+"revision":""},     
+  "category": "Script"                   
+} 
