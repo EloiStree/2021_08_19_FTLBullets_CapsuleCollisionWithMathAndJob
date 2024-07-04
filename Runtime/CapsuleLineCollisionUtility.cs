@@ -185,7 +185,7 @@ Vector3 startPointB, Vector3 endPointB, float lineRadiusB,
 
     }
 
-    public static void DoesCapsulesCollide(
+    private static void DoesCapsulesCollide(
         Vector3 startPointA,
         Vector3 endPointA,
         float lineRadiusA,
@@ -445,6 +445,37 @@ Vector3 startPointB, Vector3 endPointB, float lineRadiusB,
     }
 
     #endregion
+
+
+
+
+    public static bool IsTouching(
+        Vector3 startPointAWorldSpace,
+     Vector3 endPointAWorldSpace
+        ,float radiusA 
+     , Vector3 startPointBWorldSpace,
+     Vector3 endPointBWorldSpace,
+        float radiusB
+        ) {
+
+
+        Vector3 shortestStartLineA, shortestEndLineB;
+        CapsuleLineCollisionUtility.
+        GetShortestLineBetweenTwoSections(
+            out shortestStartLineA,
+            out shortestEndLineB,
+            startPointAWorldSpace,
+            endPointAWorldSpace,
+            startPointBWorldSpace,
+            endPointBWorldSpace
+            );
+
+        Vector3 forward = (shortestEndLineB - shortestStartLineA);
+
+        bool isInRange = forward.magnitude < (radiusA + radiusB);
+        return isInRange;
+
+    }
 
 
     public static void GetShortestLineBetweenTwoSections(
