@@ -34,6 +34,7 @@ public class Experiment_ShortestDistanceBetweenTwoVector3 : MonoBehaviour
 
 
 
+    public bool m_isTouching;
     void Update()
     {
         Vector3 shortestStartLineA, shortestEndLineB;
@@ -47,8 +48,8 @@ public class Experiment_ShortestDistanceBetweenTwoVector3 : MonoBehaviour
             m_endPointB.position,
             m_useDebug);
         Vector3 forward = (shortestEndLineB - shortestStartLineA);
-
-        Debug.DrawLine(shortestStartLineA, shortestEndLineB, forward.magnitude > (m_radiusA + m_radiusB) ? Color.red : Color.green);
+        m_isTouching = forward.magnitude < (m_radiusA + m_radiusB);
+        Debug.DrawLine(shortestStartLineA, shortestEndLineB, m_isTouching ? Color.red : Color.green);
         if (m_shortestLine != null && forward != Vector3.zero)
         {
             m_shortestLine.position = (shortestStartLineA + shortestEndLineB) / 2f;
@@ -86,29 +87,29 @@ public class Experiment_ShortestDistanceBetweenTwoVector3 : MonoBehaviour
         forward = (m_endPointA.position - m_startPointA.position);
         m_lineAStart.position = m_startPointA.position;
         m_lineAEnd.position = m_endPointA.position;
-        m_lineAStart.localScale = Vector3.one * m_radiusA;
-        m_lineAEnd.localScale = Vector3.one * m_radiusA;
+        m_lineAStart.localScale = Vector3.one * m_radiusA*2;
+        m_lineAEnd.localScale = Vector3.one * m_radiusA * 2;
 
         m_lineAMiddle.position = (m_startPointA.position + m_endPointA.position) / 2f;
         m_lineAMiddle.up = (forward).normalized;
-        m_lineAMiddle.localScale = new Vector3(m_radiusA, forward.magnitude, m_radiusA);
+        m_lineAMiddle.localScale = new Vector3(m_radiusA * 2, forward.magnitude, m_radiusA * 2);
         m_lineAMiddleRadius.position = m_lineAMiddle.position;
         m_lineAMiddleRadius.up = (forward).normalized;
-        m_lineAMiddleRadius.localScale = new Vector3(m_radiusA, forward.magnitude, m_radiusA);
+        m_lineAMiddleRadius.localScale = new Vector3(m_radiusA * 2, forward.magnitude, m_radiusA * 2);
 
 
         forward = (m_endPointB.position - m_startPointB.position);
         m_lineBStart.position = m_endPointB.position;
         m_lineBEnd.position = m_startPointB.position;
-        m_lineBStart.localScale = Vector3.one * m_radiusB;
-        m_lineBEnd.localScale = Vector3.one * m_radiusB;
+        m_lineBStart.localScale = Vector3.one * m_radiusB * 2;
+        m_lineBEnd.localScale = Vector3.one * m_radiusB * 2;
 
         m_lineBMiddle.position = (m_lineBStart.position + m_lineBEnd.position) / 2f;
         m_lineBMiddle.up = (forward).normalized;
-        m_lineBMiddle.localScale = new Vector3(m_radiusB, forward.magnitude, m_radiusB);
+        m_lineBMiddle.localScale = new Vector3(m_radiusB * 2, forward.magnitude, m_radiusB * 2);
         m_lineBMiddleRadius.position = m_lineBMiddle.position;
         m_lineBMiddleRadius.up = (forward).normalized;
-        m_lineBMiddleRadius.localScale = new Vector3(m_radiusB, forward.magnitude, m_radiusB);
+        m_lineBMiddleRadius.localScale = new Vector3(m_radiusB * 2, forward.magnitude, m_radiusB * 2);
 
 
     }
