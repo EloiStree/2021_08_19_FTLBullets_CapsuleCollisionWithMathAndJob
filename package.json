@@ -1,6 +1,6 @@
 
 {                                                                                
-  "name": "be.eloistree.capsulecollisionutility",                              
+  "name": "be.elab.capsulecollisionutility",                              
   "displayName": "Capsule Collision Utility",                        
   "version": "0.0.1",                         
   "unity": "2018.1",                             
